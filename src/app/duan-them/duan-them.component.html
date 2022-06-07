@@ -1,0 +1,64 @@
+<section id="basic-vertical-layouts" class="container">
+    <div class="row match-height">
+        <div class="col-12">
+            <div class="card mt-4 shadow">
+                <div class="card-header bg-white border-0 p-0 m-4 mb-0 d-flex justify-content-between align-items-center">
+                    <h4 class="card-title fs-3">THÊM DỰ ÁN</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <form class="form form-vertical">
+                            <div class="form-body">
+                                <div class="row">
+                                    <div class="col-12 mb-3">
+                                        <div class="form-group">
+                                            <label for="project-name-vertical">Tên dự án</label>
+                                            <input type="text" id="project-name-vertical" class="form-control"
+                                                name="fname" placeholder="Tên dự án">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <div class="form-group">
+                                            <label for="project-date-vertical">Ngày triển khai</label>
+                                            <input type="date" id="project-date-vertical" class="form-control"
+                                                name="project-date" placeholder="Ngày triển khai">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <div class="form-group">
+                                            <label for="Price-vertical">Chi phí</label>
+                                            <input type="number" min="0" id="Price-vertical" class="form-control"
+                                                name="contact" placeholder="Chi phí">
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-12 mb-3">
+                                        <div class="form-group">
+                                            <label for="leader-column">Leader</label>
+                                            <ng-select class="" placeholder="Chọn leader">
+                                                <ng-option *ngFor="let nv of listNhanVien" [value]="nv.id">{{nv.ho}}
+                                                    {{nv.ten}}
+                                                </ng-option>
+                                            </ng-select>
+                                        </div>
+                                    </div> -->
+                                    <!-- <div class="col-12 mb-3">
+                                        <div class="form-group">
+                                            <label for="leader-column">Thành viên</label>
+                                            <ng-select class="" [items]="dsXV" bindLabel="ten"
+                                                placeholder="Chọn thành viên" appendTo="body" [multiple]="true">
+                                            </ng-select>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">Thêm dự án</button>
+                                        <button type="reset" class="btn btn-light-secondary me-1 mb-1">Cài lại</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

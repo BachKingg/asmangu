@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="card mt-4 border-0 shadow fs-5">
+        <div class="card-header bg-white border-0 p-0 m-4 mb-0 d-flex justify-content-between align-items-center">
+            <h4 class="card-title fs-3">DANH SÁCH NHIỆM VỤ</h4>
+            <div>
+                <h5>
+                    Số lượng nhiệm vụ: <b class="fs-5">{{listTask.length}}</b>
+                </h5>
+            </div>
+            <form class="d-flex">
+                <input class="form-control me-2" type="text" placeholder="Từ khóa" aria-label="Search" name="da">
+                <button class="btn btn-primary rounded-pill" type="submit">Tìm</button>
+            </form>
+        </div>
+        <div class="card-content">
+            <div class="card-body border-bottom" *ngFor="let task of listTask">
+                <h5>Tên: {{task.tenTask}}</h5>
+                <p>Mô tả: {{task.moTa}}.</p>
+                <!-- Table with outer spacing -->
+                <div class="table-responsive">
+                    <table
+                        class="table mb-0 rounded table-hover bg-light-primary table-borderless text-center table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Ưu tiên</th>
+                                <th scope="col">Trạng thái</th>
+                                <th scope="col">Mã nhân viên</th>
+                                <th scope="col">Mã dự án</th>
+                                <th scope="col">Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{task.priority}}</td>
+                                <td>{{task.status}}</td>
+                                <td>{{task.nhanvienID}}</td>
+                                <td>{{task.duAnID}}</td>
+                                <td>
+                                    <i class='bx bx-info-circle'></i>
+                                    <i class='bx bx-edit'></i>
+                                    <i class='bx bx-trash'></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

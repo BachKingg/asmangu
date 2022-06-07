@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="card mt-4 border-0 shadow fs-5">
+        <div class="card-header bg-white border-0 p-0 m-4 mb-0 d-flex justify-content-between align-items-center">
+            <h4 class="card-title fs-3">DANH SÁCH NHÂN VIÊN</h4>
+            <div>
+                <h5>
+                    Số lượng nhân viên: <b class="fs-5">{{listNhanVien.length}}</b>
+                </h5>
+            </div>
+            <form class="d-flex">
+                <input class="form-control me-2" type="text" placeholder="Từ khóa" aria-label="Search" name="da">
+
+                <button class="btn btn-primary rounded-pill" type="submit">Tìm</button>
+            </form>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <!-- Table with outer spacing -->
+                <div class="table-responsive">
+                    <table class="table mb-0 rounded table-hover bg-light-primary table-borderless text-center">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Họ & Tên</th>
+                                <th scope="col">Ngày sinh</th>
+                                <th scope="col">Giới tính</th>
+                                <th scope="col">Khu vực</th>
+                                <th scope="col">Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let nv of listNhanVien">
+                                <th scope="row">{{nv.id}}</th>
+                                <td>{{nv.fullname}}</td>
+                                <td>{{nv.ngaysinh | date:"dd/MM/yyyy"}}</td>
+                                <td>{{nv.phai==true?'Nam':'Nữ'}}</td>
+                                <td>{{nv.khuvuc}}</td>
+                                <td>
+                                    <i class='bx bx-info-circle'></i>
+                                    <i class='bx bx-edit' (click)="editNV(nv)"></i>
+                                    <i class='bx bx-trash' (click)="deleteNV(nv.id)"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

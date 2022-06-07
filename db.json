@@ -1,0 +1,306 @@
+{
+  "task": [
+    {
+      "id": 1,
+      "tenTask": "Trồng cây số lượng lớn",
+      "duAnID": 1,
+      "nhanvienID": 1,
+      "moTa": "Nhân viên kêu gọi hết sức người dân trồng cây xanh, vì một đất nước xanh",
+      "status": 1,
+      "priority": 1
+    },
+    {
+      "id": 2,
+      "tenTask": "Mô hình nuôi heo công nghệ cao",
+      "duAnID": 2,
+      "nhanvienID": 2,
+      "moTa": "Áp dụng mô hình và kỹ thuật nuôi heo công nghệ cao của nước ngoài, heo được ở máy lạnh",
+      "status": 2,
+      "priority": 1
+    },
+    {
+      "id": 3,
+      "tenTask": "Website an toàn",
+      "duAnID": 3,
+      "nhanvienID": 3,
+      "moTa": "Xây dựng bảo mật web an toàn",
+      "status": 1,
+      "priority": 2
+    },
+    {
+      "id": 4,
+      "tenTask": "Thương hiệu coffee lớn nhất VN",
+      "duAnID": 4,
+      "nhanvienID": 6,
+      "moTa": "Xây dựng thương hiệu",
+      "status": 3,
+      "priority": 1
+    },
+    {
+      "id": 5,
+      "tenTask": "Tòa nhà cao nhất VN",
+      "duAnID": 5,
+      "nhanvienID": 3,
+      "moTa": "Xây dựng 1 tòa nhà cao hơn Land Mark",
+      "status": 3,
+      "priority": 1
+    },
+    {
+      "id": 7,
+      "tenTask": "Edit phim",
+      "duAnID": 6,
+      "nhanvienID": 4,
+      "moTa": "Edit áp dụng kỹ xảo điện ảnh công nghệ cao vào phim",
+      "status": 1,
+      "priority": 2
+    },
+    {
+      "id": 9,
+      "tenTask": "Testing Application",
+      "duAnID": "9",
+      "nhanvienID": "4",
+      "moTa": "Test project cuối cùng",
+      "status": "3",
+      "priority": "2"
+    },
+    {
+      "id": "10",
+      "tenTask": "Tạo SmartContract",
+      "duAnID": "7",
+      "nhanvienID": "6",
+      "moTa": "tạo 1 smartcontract cơ bản để chuyển tiền",
+      "status": "1",
+      "priority": "1"
+    }
+  ],
+  "nhanVien": [
+    {
+      "id": "1",
+      "fullname": "Nguyễn Bá Đạo",
+      "ngaysinh": "2001-1-3",
+      "phai": "true",
+      "khuvuc": "Bắc"
+    },
+    {
+      "id": "2",
+      "fullname": "Phạm Kỹ Luật",
+      "ngaysinh": "2001-5-6",
+      "phai": "true",
+      "khuvuc": "Bắc"
+    },
+    {
+      "id": "3",
+      "fullname": "Mai Thanh Toán",
+      "ngaysinh": "2002-6-15",
+      "phai": "true",
+      "khuvuc": "Nam"
+    },
+    {
+      "id": "4",
+      "fullname": "Cao Thị Chót Vót",
+      "ngaysinh": "2002-8-19",
+      "phai": "false",
+      "khuvuc": "Nam"
+    },
+    {
+      "id": "5",
+      "fullname": "Mai Phạt Sáu Ngàn",
+      "ngaysinh": "2001-2-28",
+      "phai": "false",
+      "khuvuc": "Trung"
+    },
+    {
+      "id": "6",
+      "fullname": "Đào Anh Tài",
+      "ngaysinh": "1998-5-30",
+      "phai": "true",
+      "khuvuc": "Nam"
+    },
+    {
+      "id": "7",
+      "fullname": "Huỳnh Khánh An",
+      "ngaysinh": "1998-05-31",
+      "phai": "true",
+      "khuvuc": "Nam"
+    },
+    {
+      "id": "8",
+      "fullname": "Nguyễn Thanh Tùng",
+      "ngaysinh": "2002-09-09",
+      "phai": "true",
+      "khuvuc": "Trung"
+    },
+    {
+      "id": "9",
+      "fullname": "Võ Hoài Trâm",
+      "ngaysinh": "2001-12-12",
+      "phai": "false",
+      "khuvuc": "Bắc"
+    },
+    {
+      "id": "10",
+      "fullname": "Nguyễn Quỳnh Anh",
+      "ngaysinh": "2004-03-26",
+      "phai": "false",
+      "khuvuc": "Nam"
+    },
+    {
+      "id": "11",
+      "fullname": "Nguyễn Ngọc Đức",
+      "ngaysinh": "2011-07-22",
+      "phai": "true",
+      "khuvuc": "Bắc"
+    }
+  ],
+  "duAn": [
+    {
+      "id": "1",
+      "tenDuAn": "Quản lý trại heo",
+      "ngayStart": "2022-03-01",
+      "tien": "6700000",
+      "leader": "1",
+      "thanhvien": [
+        "1",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "id": "2",
+      "tenDuAn": "Cây xanh công viên",
+      "ngayStart": "2022-03-15",
+      "tien": "5700000",
+      "leader": "1",
+      "thanhvien": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    {
+      "id": "3",
+      "tenDuAn": "Website Văn hóa Việt",
+      "ngayStart": "2022-03-17",
+      "tien": "9700000",
+      "leader": "2",
+      "thanhvien": [
+        "2",
+        "4"
+      ]
+    },
+    {
+      "id": "4",
+      "tenDuAn": "Website Du lịch Bụi",
+      "ngayStart": "2022-03-19",
+      "tien": "7700000",
+      "leader": "2",
+      "thanhvien": [
+        "3",
+        "5"
+      ]
+    },
+    {
+      "id": "5",
+      "tenDuAn": "Quản lý nhà thuốc Vĩnh An",
+      "ngayStart": "2022-03-22",
+      "tien": "97000000",
+      "leader": "3",
+      "thanhvien": [
+        "1",
+        "4"
+      ]
+    },
+    {
+      "id": "6",
+      "tenDuAn": "Chăm sóc thú cưng",
+      "ngayStart": "2022-03-30",
+      "tien": "180000000",
+      "leader": "3",
+      "thanhvien": [
+        "4",
+        "5"
+      ]
+    },
+    {
+      "id": "7",
+      "tenDuAn": "Blockchain",
+      "ngayStart": "2022-03-30",
+      "tien": "530000000",
+      "leader": "1",
+      "thanhvien": [
+        "1",
+        "4",
+        "7",
+        "9",
+        "10",
+        "11"
+      ]
+    },
+    {
+      "id": "8",
+      "tenDuAn": "Quản lý nghệ sĩ",
+      "ngayStart": "2022-06-01",
+      "tien": "95000000",
+      "leader": "2",
+      "thanhvien": [
+        "3",
+        "4",
+        "5",
+        "8",
+        "11"
+      ]
+    },
+    {
+      "id": "9",
+      "tenDuAn": "Testing App",
+      "ngayStart": "2022-05-12",
+      "tien": "35000000",
+      "leader": "1",
+      "thanhvien": [
+        "1",
+        "5",
+        "7",
+        "8"
+      ]
+    },
+    {
+      "id": "10",
+      "tenDuAn": "GameFi",
+      "ngayStart": "2022-06-03",
+      "tien": "460000000",
+      "leader": "2",
+      "thanhvien": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "8",
+        "9",
+        "10"
+      ]
+    }
+  ],
+  "leader": [
+    {
+      "id": 1,
+      "ho": "Huỳnh Quốc",
+      "ten": "Hưng",
+      "ngaysinh": "2001-11-15",
+      "phai": true
+    },
+    {
+      "id": 2,
+      "ho": "Nguyễn Tấn",
+      "ten": "Tường",
+      "ngaysinh": "1999-5-6",
+      "phai": true
+    },
+    {
+      "id": 3,
+      "ho": "Đặng Trung",
+      "ten": "Kiên",
+      "ngaysinh": "2002-3-6",
+      "phai": true
+    }
+  ]
+}

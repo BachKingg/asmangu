@@ -1,0 +1,107 @@
+<section id="multiple-column-form" class="container">
+    <div class="row match-height">
+        <div class="col-12">
+            <div class="card mt-4 shadow">
+                <div
+                    class="card-header bg-white border-0 p-0 m-4 mb-0 d-flex justify-content-between align-items-center">
+                    <h4 class="card-title fs-3">THÊM NHÂN VIÊN</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <form class="form" #frm1="ngForm" (ngSubmit)="xuly(frm1.value)">
+                            <div class="row">
+                                <div class=" col-12">
+                                    <div class="form-group">
+                                        <label for="first-name-column">Họ & Tên</label>
+                                        <input type="text" id="first-name-column"
+                                            class="form-control ng-untouched ng-pristine ng-valid"
+                                            placeholder="Nhập tên đầy đủ ..." minlength="4" name="staffFullName"
+                                            [(ngModel)]="staffFullName" required #errFullName="ngModel">
+                                        <div *ngIf="errFullName.invalid && (errFullName.dirty || errFullName.touched)"
+                                            class="alert mb-0 text-danger">
+                                            <div *ngIf="errFullName.errors?.['required']">
+                                                Chưa nhập tên.
+                                            </div>
+                                            <div *ngIf="errFullName.errors?.['minlength']">
+                                                Tên ít nhất phải 4 ký tự.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" col-12">
+                                    <div class="form-group">
+                                        <label for="date-column">Ngày sinh</label>
+                                        <input type="date" id="date-column" class="form-control" placeholder="Ngày sinh"
+                                            name="staffBirth" [(ngModel)]="staffBirth" required #errBirth="ngModel">
+                                        <div *ngIf="errBirth.invalid && (errBirth.dirty || errBirth.touched)"
+                                            class="alert mb-0 text-danger">
+                                            <div *ngIf="errBirth.errors?.['required']">
+                                                Chưa chọn ngày sinh.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" col-12">
+                                    <div class="form-group">
+                                        <label for="sex-floating">Giới tính</label>
+                                        <div class="d-flex justify-content-start border rounded p-1">
+                                            <div class="form-check" style="margin-right: 20px">
+                                                <input class="form-check-input" type="radio" id="flexRadioDefault1"
+                                                    checked name="staffGender" [(ngModel)]="staffGender" value="true"
+                                                    required #errGender="ngModel">
+                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                    Nam
+                                                </label>
+                                            </div>
+                                            <div class="form-check " style="margin-right: 20px">
+                                                <input class="form-check-input" type="radio" id="flexRadioDefault2"
+                                                    name="staffGender" [(ngModel)]="staffGender" value="false" required
+                                                    #errGender="ngModel">
+                                                <label class="form-check-label" for="flexRadioDefault2">
+                                                    Nữ
+                                                </label>
+
+                                            </div>
+                                        </div>
+                                        <div *ngIf="errGender.invalid && (errGender.dirty || errGender.touched)"
+                                            class="alert mb-0 text-danger">
+                                            <div *ngIf="errGender.errors?.['required']">
+                                                Chưa chọn giới tính.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" col-12">
+                                    <div class="form-group">
+                                        <label for="side-column">Khu vực</label>
+                                        <select class="form-select" aria-label="Default select example" name="staffArea"
+                                            [(ngModel)]="staffArea" required #errArea="ngModel">
+                                            <option value="Bắc">Bắc</option>
+                                            <option value="Trung">Trung</option>
+                                            <option value="Nam">Nam</option>
+                                        </select>
+                                    </div>
+                                    <div *ngIf="errArea.invalid && (errArea.dirty || errArea.touched)"
+                                        class="alert mb-0 text-danger">
+                                        <div *ngIf="errArea.errors?.['required']">
+                                            Chưa chọn khu vực.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary me-1 mb-1" [disabled]="!frm1.form.valid">Thêm mới</button>
+                                    <button type="reset" class="btn btn-light-secondary me-1 mb-1">Cài lại</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <p> Value : {{frm1.value|json}} </p>
+    <p> Username : {{frm1.value.ten}} </p>
+    <p> Password : {{frm1.value.ngaysinh}} </p>
+    <p> Password : {{frm1.value.phai}} </p>
+    <p> Password : {{frm1.value.khuvuc}} </p> -->
+</section>

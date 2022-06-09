@@ -6,7 +6,7 @@
             </div>
             <div>
                 <h5>
-                    Số lượng dự án: <b class="fs-5">{{listduan.length}}</b>
+                    Số lượng dự án: <b class="fs-5">{{listDuan.length}}</b>
                 </h5>
             </div>
             <form class="d-flex">
@@ -31,7 +31,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let da of listduan">
+                            <tr *ngFor="let da of listDuan">
                                 <th scope="row">{{da.id}}</th>
                                 <td [routerLink]="['/duan/chitietDA',da.id]">{{da.tenDuAn}}</td>
                                 <td>{{da.ngayStart | date:"dd/MM/yyyy"}}</td>
@@ -40,8 +40,8 @@
                                 <td>{{da.thanhvien}}</td>
                                 <td>
                                     <i class='bx bx-info-circle'></i>
-                                    <i class='bx bx-edit'></i>
-                                    <i class='bx bx-trash'></i>
+                                    <i class='bx bx-edit' (click)="editDuAn(da)"></i>
+                                    <i class='bx bx-trash' (click)="deleteDuAn(da.id)"></i>
                                 </td>
                             </tr>
                         </tbody>

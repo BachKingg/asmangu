@@ -24,21 +24,34 @@
                             <tr>
                                 <th scope="col">Ưu tiên</th>
                                 <th scope="col">Trạng thái</th>
-                                <th scope="col">Mã nhân viên</th>
-                                <th scope="col">Mã dự án</th>
+                                <th scope="col">Người thực hiện</th>
+                                <th scope="col">Tên dự án</th>
                                 <th scope="col">Options</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{{task.priority}}</td>
-                                <td>{{task.status}}</td>
-                                <td>{{task.nhanvienID}}</td>
-                                <td>{{task.duAnID}}</td>
+                                <td>{{task.priority == 1 ? "Gấp" : "Không gấp"}}</td>
+                                <td>{{task.status == 1 ? "Đang chờ" : task.status ==2 ? "Hoàn thành" : "Đang sửa lỗi"}}
+                                </td>
+                                <td>
+                                    <div *ngFor="let nv of listNV">
+                                        <p *ngIf="task.nhanvienID == nv.id">
+                                            {{nv.fullname}}
+                                        </p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div *ngFor="let da of listDuAn">
+                                        <p *ngIf="task.duAnID == da.id">
+                                            {{da.tenDuAn}}
+                                        </p>
+                                    </div>
+                                </td>
                                 <td>
                                     <i class='bx bx-info-circle'></i>
-                                    <i class='bx bx-edit'></i>
-                                    <i class='bx bx-trash'></i>
+                                    <i class='bx bx-edit' (click)="editTask(task)"></i>
+                                    <i class='bx bx-trash' (click)="deleteTask(task.id)"></i>
                                 </td>
                             </tr>
                         </tbody>

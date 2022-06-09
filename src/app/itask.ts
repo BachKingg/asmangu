@@ -3,7 +3,7 @@ export interface Itask {
     tenTask: string;
     moTa: string;
     duAnID: number;
-    nhanvienID: number[];
+    nhanvienID: number;
     priority: number;
     status: number;
 }

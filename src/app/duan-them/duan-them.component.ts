@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Leader } from '../leader';
 import { Inhanvien } from '../inhanvien';
+import { DuanService } from '../duan.service';
+import { LeaderService } from '../leader.service';
 import { NhanvienService } from '../nhanvien.service';
-
+import { Router } from '@angular/router';
 @Component({
     selector: 'app-duan-them',
     templateUrl: './duan-them.component.html',
@@ -9,22 +12,65 @@ import { NhanvienService } from '../nhanvien.service';
 })
 export class DuanThemComponent implements OnInit {
 
-    // dsXV: Inhanvien[] = [
-    //     { id: 1, ho: 'Nguyễn Bá', ten: 'Đạo', ngaysinh: '2001-1-3', phai: true, khuvuc: 'Bắc' },
-    //     { id: 2, ho: 'Phạm Kỷ', ten: 'Luật', ngaysinh: '2001-5-6', phai: true, khuvuc: 'Bắc' },
-    //     { id: 3, ho: 'Mai Thanh', ten: 'Toán', ngaysinh: '2992-6-15', phai: false, khuvuc: 'Nam' },
-    //     { id: 4, ho: 'Cao Thị Chót', ten: 'Vót', ngaysinh: '2002-8-19', phai: false, khuvuc: 'Nam' },
-    //     { id: 5, ho: 'Nguyễn Xuân', ten: 'Bách', ngaysinh: '2002-11-19', phai: true, khuvuc: 'Nam' },
-    // ];
+    projectName: any;
+    projectDate: any;
+    projectPrice: any;
+    projectLeader: any;
+    projectMember: any;
 
     constructor(
-        private nvService: NhanvienService
-    ) { }
+        private LeaderService: LeaderService,
+        private NhanvienService: NhanvienService,
+        private DuanService: DuanService,
+        private Router: Router,
 
+    ) { }
+    listLeader: Leader[] = [];
     listNhanVien: Inhanvien[] = [];
+    allProject: any;
+
 
     ngOnInit(): void {
-        // this.listNhanVien  = this.nvService.getNhanVien();        
+
+        this.LeaderService.getDataLeader().subscribe(
+            (response: any) => {
+                this.listLeader = response;
+            },
+            (error: any) => {
+                console.log(error);
+            }
+        );
+        this.NhanvienService.getDataNV().subscribe(
+            (response: any) => {
+                this.listNhanVien = response;
+            },
+            (error: any) => {
+                console.log(error);
+            }
+        );
+        this.DuanService.getDataDA().subscribe(
+            (response: any) => {
+                this.allProject = response;
+            },
+            (error: any) => {
+                console.log(error);
+            }
+        );
     }
 
+    xuly(data: any) {
+        // let allProject = this.DuAnService.getAll();
+        data = {
+            id: parseInt(this.allProject[this.allProject.length - 1].id) + 1,
+            tenDuAn: this.projectName,
+            ngayStart: this.projectDate,
+            tien: parseInt(this.projectPrice),
+            leader: this.projectLeader,
+            thanhvien: this.projectMember,
+        };
+        console.log('Data: ', data);
+        this.DuanService.addDA(data);
+        alert('Thêm dự án thành công');
+        this.Router.navigate(['duan/listDA']);
+    }
 }

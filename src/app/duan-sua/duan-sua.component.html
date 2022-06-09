@@ -1,1 +1,108 @@
-<p>duan-sua works!</p>
+<section id="basic-vertical-layouts" class="container">
+    <div class="row match-height">
+        <div class="col-12">
+            <div class="card mt-4 shadow">
+                <div
+                    class="card-header bg-white border-0 p-0 m-4 mb-0 d-flex justify-content-between align-items-center">
+                    <h4 class="card-title fs-3">CẬP NHẬT DỰ ÁN</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <form class="form form-vertical" #frm1="ngForm" (ngSubmit)="xuly(frm1.value)">
+                            <div class="form-body">
+                                <div class="row">
+                                    <div class="col-12 mb-3">
+                                        <div class="form-group">
+                                            <label for="project-name-vertical">Tên dự án</label>
+                                            <input type="text" id="project-name-vertical" class="form-control"
+                                                placeholder="Nhập tên dự án ..." name="projectName"
+                                                [(ngModel)]="projectName" required minlength="4" #errName="ngModel">
+                                            <div *ngIf="errName.invalid && (errName.dirty || errName.touched)"
+                                                class="alert mb-0 text-danger">
+                                                <div *ngIf="errName.errors?.['required']">
+                                                    Chưa nhập tên dự án.
+                                                </div>
+                                                <div *ngIf="errName.errors?.['minlength']">
+                                                    Tên dự án ít nhất phải 4 ký tự.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <div class="form-group">
+                                            <label for="project-date-vertical">Ngày triển khai</label>
+                                            <input type="date" id="project-date-vertical" class="form-control"
+                                                placeholder="Ngày triển khai" name="projectDate"
+                                                [(ngModel)]="projectDate" required #errDate="ngModel">
+                                            <div *ngIf="errDate.invalid && (errDate.dirty || errDate.touched)"
+                                                class="alert mb-0 text-danger">
+                                                <div *ngIf="errDate.errors?.['required']">
+                                                    Chưa chọn ngày triển khai.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <div class="form-group">
+                                            <label for="Price-vertical">Chi phí</label>
+                                            <input type="number" id="Price-vertical" class="form-control"
+                                                placeholder="Chi phí" min="0" [(ngModel)]="projectPrice"
+                                                name="projectPrice" required #errPrice="ngModel">
+                                            <div *ngIf="errPrice.invalid && (errPrice.dirty || errPrice.touched)"
+                                                class="alert mb-0 text-danger">
+                                                <div *ngIf="errPrice.errors?.['required']">
+                                                    Chưa nhập chi phí dự án.
+                                                </div>
+                                                <div *ngIf="(projectPrice < 0)">
+                                                    Vui lòng nhập số tiền lớn hơn 0.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <div class="form-group">
+                                            <label for="leader-column">Leader</label>
+                                            <ng-select placeholder="Chọn leader" name="projectLeader"
+                                                [(ngModel)]="projectLeader" required #errLeader="ngModel" appendTo="body">
+
+                                                <ng-option *ngFor="let nv of listNhanVien" [value]="nv.id">
+                                                    {{nv.fullname}} 
+                                                </ng-option>
+
+                                            </ng-select>
+                                            <div *ngIf="errLeader.invalid && (errLeader.dirty || errLeader.touched)"
+                                                class="alert mb-0 text-danger">
+                                                <div *ngIf="errLeader.errors?.['required']">
+                                                    Chưa chọn Leader.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <div class="form-group">
+                                            <label for="leader-column">Thành viên</label>
+                                            <ng-select class="" [items]="listNhanVien" bindLabel="fullname"
+                                                placeholder="Chọn thành viên" appendTo="body" bindValue="id" [multiple]="true" name="projectMember" [(ngModel)]="projectMember" required
+                                                #errMember="ngModel">
+                                            </ng-select>
+                                            <div *ngIf="errMember.invalid && (errMember.dirty || errMember.touched)"
+                                                class="alert mb-0 text-danger">
+                                                <div *ngIf="errMember.errors?.['required']">
+                                                    Chưa chọn thành viên.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-primary me-1 mb-1"
+                                        [disabled]="!frm1.form.valid">Cập nhật</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

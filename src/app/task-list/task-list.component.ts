@@ -43,4 +43,17 @@ export class TaskListComponent implements OnInit {
         });
     }
 
+    editTask(task: any) {
+        this.DataService.sendData(task);
+        this.router.navigate([`/taskSua/${task.id}`]);
+    }
+
+    deleteTask(id: number) {
+        confirm('Bạn có chắc chắn muốn xóa task này không ?') &&
+            this.TaskService.deleteTask(id);
+        setTimeout(() => {
+            this.getData();
+        }, 500);
+    }
+
 }

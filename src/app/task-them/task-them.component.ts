@@ -19,7 +19,6 @@ export class TaskThemComponent implements OnInit {
     listDuAn: Iduan[] = [];
     listNhanVien: Inhanvien[] = [];
 
-
     ngOnInit(): void {
         this.listNhanVien = this.nvService.getAllNV();
         this.listDuAn = this.daService.getAllDA();

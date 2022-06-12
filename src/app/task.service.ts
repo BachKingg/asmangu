@@ -18,6 +18,7 @@ export class TaskService {
         { id: 8, tenTask: 'Hướng dẫn sử dụng và bàn giao', duAnID: 5, nhanvienID: 1, moTa: "Hướng dẫn sử dụng cho khách hàng", status: 0, priority: 2 },
         { id: 9, tenTask: 'Testing 2', duAnID: 4, nhanvienID: 2, moTa: "Kiểm tra các tính năng bảo mật theo các yêu cầu đã nêu trong tài liệu dự án", status: 0, priority: 2 },
     ]
+    
     private url = 'http://localhost:3000/task';
 
     constructor(private http: HttpClient) { }

@@ -45,7 +45,7 @@ export class TaskListComponent implements OnInit {
 
     editTask(task: any) {
         this.DataService.sendData(task);
-        this.router.navigate([`/taskSua/${task.id}`]);
+        this.router.navigate([`/task/suaTask/${task.id}`]);
     }
 
     deleteTask(id: number) {

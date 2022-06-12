@@ -1,1 +1,125 @@
-<p>task-sua works!</p>
+<section id="basic-vertical-layouts" class="container">
+    <div class="row match-height">
+        <div class="col-12">
+            <div class="card mt-4 shadow">
+                <div
+                    class="card-header bg-white border-0 p-0 m-4 mb-0 d-flex justify-content-between align-items-center">
+                    <h4 class="card-title fs-3">THÊM NHIỆM VỤ</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <form class="form form-vertical" [formGroup]="frm1" (ngSubmit)="xuly(frm1.value)" #heroForm="ngForm">
+                            <div class="form-body">
+                                <div class="row">
+                                    <div class="col-12  mb-3">
+                                        <div class="form-group">
+                                            <label for="task-name-vertical">Tên nhiệm vụ</label>
+                                            <input type="text" id="task-name-vertical" class="form-control" name="fname"
+                                                placeholder="Tên nhiệm vụ" formControlName="taskName" required>
+                                        </div>
+                                        <div *ngIf="frm1.controls['taskName'].invalid && (frm1.controls['taskName'].dirty || frm1.controls['taskName'].touched)"
+                                            class="alert mb-0 text-danger">
+                                            <div *ngIf="frm1.controls['taskName'].errors?.['required']">
+                                                Chưa nhập tên nhiệm vụ.
+                                            </div>
+                                            <div *ngIf="frm1.controls['taskName'].errors?.['minlength']">
+                                                Tên nhiệm vụ ít nhất phải 4 ký tự.
+                                            </div>
+                                        </div>
+                                        <div class="col-12  mb-3">
+                                            <div class="form-group">
+                                                <label for="project-date-vertical">Mô tả</label>
+                                                <div class="form-floating">
+                                                    <textarea class="form-control" id="floatingTextarea"
+                                                        formControlName="taskDescription" required></textarea>
+                                                    <label for="floatingTextarea">Viết vài dòng mô tả ở đây...</label>
+                                                </div>
+                                                <div *ngIf="frm1.controls['taskProject'].invalid && (frm1.controls['taskProject'].dirty || frm1.controls['taskProject'].touched)"
+                                                    class="alert mb-0 text-danger">
+                                                    <div *ngIf="frm1.controls['taskProject'].errors?.['required']">
+                                                        Chưa nhập mô tả nhiệm vụ.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12  mb-3">
+                                            <div class="form-group">
+                                                <label for="project-column">Dự án</label>
+                                                <select class="form-select" aria-label="Default select example"
+                                                    formControlName="taskProject" required>
+                                                    <option *ngFor="let nv of listDuAn" value="{{nv.id}}" selected>
+                                                        {{nv.tenDuAn}}</option>
+                                                </select>
+                                                <div *ngIf="frm1.controls['taskProject'].invalid && (frm1.controls['taskProject'].dirty || frm1.controls['taskProject'].touched)"
+                                                    class="alert mb-0 text-danger">
+                                                    <div *ngIf="frm1.controls['taskProject'].errors?.['required']">
+                                                        Chưa chọn dự án.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12  mb-3">
+                                            <div class="form-group">
+                                                <label for="member-column">Người thực hiện</label>
+                                                <select class="form-select" aria-label="Default select example"
+                                                    formControlName="taskOwner" required>
+                                                    <option *ngFor="let nv of listNhanVien" value="{{nv.id}}" selected>
+                                                        {{nv.fullname}}</option>
+                                                </select>
+                                                <div *ngIf="frm1.controls['taskOwner'].invalid && (frm1.controls['taskOwner'].dirty || frm1.controls['taskOwner'].touched)"
+                                                    class="alert mb-0 text-danger">
+                                                    <div *ngIf="frm1.controls['taskOwner'].errors?.['required']">
+                                                        Chưa chọn người thực hiện.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12  mb-3">
+                                            <div class="form-group">
+                                                <label for="priority-column">Độ ưu tiên</label>
+                                                <select class="form-select" aria-label="Default select example"
+                                                    formControlName="taskPriority" required>
+                                                    <option value="1">Cấp độ 1</option>
+                                                    <option value="2">Cấp độ 2</option>
+                                                </select>
+                                                <div *ngIf="frm1.controls['taskPriority'].invalid && (frm1.controls['taskPriority'].dirty || frm1.controls['taskPriority'].touched)"
+                                                    class="alert mb-0 text-danger">
+                                                    <div *ngIf="frm1.controls['taskPriority'].errors?.['required']">
+                                                        Chưa chọn độ ưu tiên.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12  mb-3">
+                                            <div class="form-group">
+                                                <label for="status-column">Trạng thái</label>
+                                                <select class="form-select" aria-label="Default select example"
+                                                    formControlName="taskStatus" required>
+                                                    <option value="0">Đang chờ</option>
+                                                    <option value="1">Đã hoàn thành</option>
+                                                    <option value="2">Đang sửa lỗi</option>
+                                                </select>
+                                                <div *ngIf="frm1.controls['taskStatus'].invalid && (frm1.controls['taskStatus'].dirty || frm1.controls['taskStatus'].touched)"
+                                                    class="alert mb-0 text-danger">
+                                                    <div *ngIf="frm1.controls['taskStatus'].errors?.['required']">
+                                                        Chưa chọn trạng thái.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 d-flex justify-content-end">
+                                            <button type="submit" class="btn btn-primary me-1 mb-1"
+                                                [disabled]="!heroForm.form.valid">Cập nhật</button>
+                                            <button type="reset" class="btn btn-light-secondary me-1 mb-1">Cài
+                                                lại</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

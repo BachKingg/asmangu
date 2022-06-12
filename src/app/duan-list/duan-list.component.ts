@@ -27,27 +27,27 @@ export class DuanListComponent implements OnInit {
 
     getData() {
         this.DuanService.getDataDA().subscribe(
-          (response: any) => {
-            this.listDuan = response;
-          },
-          (error: any) => {
-            console.log(error);
-          }
+            (response: any) => {
+                this.listDuan = response;
+            },
+            (error: any) => {
+                console.log(error);
+            }
         );
-      }
-    
-      editDuAn(duan: any) {
+    }
+
+    editDuAn(duan: any) {
         this.DataService.sendData(duan);
         this.Router.navigate([`/duan/suaDA/${duan.id}`]);
-        
-      }
-    
-      deleteDuAn(id: number) {
+
+    }
+
+    deleteDuAn(id: number) {
         confirm('Bạn có chắc chắn muốn xóa dự án này không ?') &&
-          this.DuanService.deleteDA(id);
+            this.DuanService.deleteDA(id);
         setTimeout(() => {
-          this.getData();
+            this.getData();
         }, 500);
-      }
+    }
 
 }

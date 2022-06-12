@@ -3,7 +3,7 @@
     {
       "id": 1,
       "tenTask": "Trồng cây số lượng lớn",
-      "duAnID": 1,
+      "duAnID": 2,
       "nhanvienID": 1,
       "moTa": "Nhân viên kêu gọi hết sức người dân trồng cây xanh, vì một đất nước xanh",
       "status": 1,
@@ -12,7 +12,7 @@
     {
       "id": 2,
       "tenTask": "Mô hình nuôi heo công nghệ cao",
-      "duAnID": 2,
+      "duAnID": 1,
       "nhanvienID": 2,
       "moTa": "Áp dụng mô hình và kỹ thuật nuôi heo công nghệ cao của nước ngoài, heo được ở máy lạnh",
       "status": 2,

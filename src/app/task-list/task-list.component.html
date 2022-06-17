@@ -26,7 +26,7 @@
                                 <th scope="col">Trạng thái</th>
                                 <th scope="col">Người thực hiện</th>
                                 <th scope="col">Tên dự án</th>
-                                <th scope="col">Options</th>
+                                <th scope="col"  *ngIf="daDangNhap()">Options</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -48,7 +48,7 @@
                                         </p>
                                     </div>
                                 </td>
-                                <td>
+                                <td  *ngIf="daDangNhap()">
                                     <i class='bx bx-info-circle'></i>
                                     <i class='bx bx-edit' (click)="editTask(task)"></i>
                                     <i class='bx bx-trash' (click)="deleteTask(task.id)"></i>

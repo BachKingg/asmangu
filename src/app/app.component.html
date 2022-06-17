@@ -13,7 +13,7 @@
                         <a class="nav-link active" aria-current="page" href="#" routerLink="/">Trang chủ</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-primary" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Dự án
                         </a>
@@ -23,7 +23,7 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-primary" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Nhiệm vụ
                         </a>
@@ -33,7 +33,7 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-primary" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Nhân viên
                         </a>
@@ -42,11 +42,50 @@
                             <li><a class="dropdown-item" href="#" routerLink="nv/listXV">Danh sách nhân viên</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Tài khoản
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="#" routerLink="/dangnhap">Đăng nhập</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" routerLink="/dangky">Đăng ký</a>
+                            </li>
+                            <li>
+                            <li *ngIf="daDangNhap()">
+                                <a class="dropdown-item" href="#" routerLink="/doipass">Đổi mật
+                                    khẩu?</a>
+                            </li>
+                            <li>
+                            <li *ngIf="daDangNhap()">
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li *ngIf="daDangNhap()">
+                                <a class="dropdown-item" href="#" (click)="thoat()">Đăng xuất</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" routerLink="thongke/tk">Thống kê</a>
+                    </li>
+
                 </ul>
-                <form class="d-flex">
+                <form class="d-flex" style="margin-right: 10px;">
                     <input class="form-control me-2" type="search" placeholder="Từ khóa" aria-label="Search">
                     <button class="btn btn-primary" type="submit">Tìm</button>
                 </form>
+                <div class="d-flex align-items-center justify-content-center" *ngIf="daDangNhap()">
+                    <div class="avatar avatar-md" style="margin-right: 4px;">
+                        <img src="assets/images/faces/2.jpg" alt="Face 1">
+                        <span class="avatar-status bg-success"></span>
+                    </div>
+                    <div class="name">
+                        <h5 class="font-bold m-0">{{username}}</h5>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -54,7 +93,7 @@
 <nav class="bg-warning"></nav>
 
 <div class="container-fluid">
-    <router-outlet></router-outlet>
+    <router-outlet (activate)="dataTeam($event)"></router-outlet>
 </div>
 
 <div class="container">

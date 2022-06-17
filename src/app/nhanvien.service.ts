@@ -14,14 +14,15 @@ export class NhanvienService {
         { id: 4, fullname: 'Cao Thị Chót Vót', ngaysinh: '2002-8-19', phai: false, khuvuc: 'Nam' },
         { id: 5, fullname: 'Nguyễn Xuân Bách', ngaysinh: '2002-11-19', phai: true, khuvuc: 'Nam' },
     ];
-    private url = 'http://localhost:3000/nhanVien';
+    private url = 'http://localhost:5000/nhanVien';
+    static id: any;
 
     constructor(private http: HttpClient) { }
 
     getAllNV() {
         return this.listNhanVien;
     }
-    
+
     getDataNV() {
         return this.http.get(this.url);
     }

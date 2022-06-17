@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { Moment } from 'moment';
 
 import { DuanListComponent } from './duan-list/duan-list.component';
 import { DuanThemComponent } from './duan-them/duan-them.component';
@@ -17,6 +18,11 @@ import { TaskThemComponent } from './task-them/task-them.component';
 import { TaskSuaComponent } from './task-sua/task-sua.component';
 import { DuanChitietComponent } from './duan-chitiet/duan-chitiet.component';
 import { HomeComponent } from './home/home.component';
+import { ThongkeComponent } from './thongke/thongke.component';
+import { DangnhapComponent } from './dangnhap/dangnhap.component';
+import { DangkyComponent } from './dangky/dangky.component';
+import { DoipassComponent } from './doipass/doipass.component';
+import { QuenpassComponent } from './quenpass/quenpass.component';
 
 @NgModule({
     declarations: [
@@ -31,7 +37,12 @@ import { HomeComponent } from './home/home.component';
         TaskThemComponent,
         TaskSuaComponent,
         DuanChitietComponent,
-        HomeComponent
+        HomeComponent,
+        ThongkeComponent,
+        DangnhapComponent,
+        DangkyComponent,
+        DoipassComponent,
+        QuenpassComponent,
     ],
     imports: [
         BrowserModule,

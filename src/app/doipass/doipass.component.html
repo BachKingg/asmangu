@@ -1,0 +1,79 @@
+<div id="auth">
+
+    <div class="row h-100">
+        <div class="col-lg-5 col-12">
+            <div id="auth-left">
+                <div class="auth-logo">
+                    <!-- <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo"></a> -->
+                </div>
+                <h1 class="auth-title">Đổi mật khẩu</h1>
+                <p class="auth-subtitle mb-5">Nhập dữ liệu của bạn để đổi mật khẩu.</p>
+
+                <form #frm1="ngForm" (ngSubmit)="xulyDN(frm1.value)">
+                    <div class="form-group position-relative has-icon-left">
+                        <input type="text" class="form-control form-control-xl" placeholder="Username" name="userName"
+                            ngModel required minlength="4" #errUsername="ngModel" [(ngModel)]="userName">
+                        <div class="form-control-icon">
+                            <i class="bi bi-person"></i>
+                        </div>
+                    </div>
+                    <div *ngIf="errUsername.invalid && (errUsername.dirty || errUsername.touched)"
+                        class="alert mb-0 text-danger">
+                        <div *ngIf="errUsername.errors?.['required']">
+                            Chưa nhập Username.
+                        </div>
+                        <div *ngIf="errUsername.errors?.['minlength']">
+                            Username ít nhất phải 4 ký tự.
+                        </div>
+                    </div>
+                    <div class="form-group position-relative has-icon-left">
+                        <input type="password" class="form-control form-control-xl" placeholder="Password"
+                            name="password" required ngModel minlength="3" #errPass="ngModel" [(ngModel)]="password" (keyup)="checkPass()">
+                        <div class="form-control-icon">
+                            <i class="bi bi-shield-lock"></i>
+                        </div>
+                    </div>
+                    <div *ngIf="errPass.invalid && (errPass.dirty || errPass.touched)" class="alert mb-0 text-danger">
+                        <div *ngIf="errPass.errors?.['required']">
+                            Chưa nhập Password.
+                        </div>
+                        <div *ngIf="errPass.errors?.['minlength']">
+                            Password ít nhất phải 3 ký tự.
+                        </div>
+                    </div>
+                    <div class="form-group position-relative has-icon-left">
+                        <input type="password" class="form-control form-control-xl" placeholder="Repassword"
+                            name="repassword" required ngModel minlength="3" #errRePass="ngModel"
+                            [(ngModel)]="password2" (keyup)="checkPass()">
+                        <div class="form-control-icon">
+                            <i class="bi bi-shield-lock"></i>
+                        </div>
+                    </div>
+                    <div *ngIf="errRePass.invalid && (errRePass.dirty || errRePass.touched)"
+                        class="alert mb-0 text-danger">
+                        <div *ngIf="errRePass.errors?.['required']">
+                            Chưa nhập Repassword.
+                        </div>
+                        <div *ngIf="errRePass.errors?.['minlength']">
+                            Repassword ít nhất phải 3 ký tự.
+                        </div>
+                    </div>
+                    <div class="text-danger" *ngIf="wrongPass">Mật khẩu không khớp</div>
+                    <div class="text-success" *ngIf="truePass">Khớp mật khẩu</div>
+                    <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Đăng ký</button>
+                </form>
+                <div class="text-center mt-5 text-lg fs-4">
+                    <p class='text-gray-600'>Bạn đã có tài khoản?
+                        <a href="#" class="font-bold" routerLink="/dangnhap">Đăng nhập</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7 d-none d-lg-block">
+            <div id="auth-right">
+
+            </div>
+        </div>
+    </div>
+
+</div>

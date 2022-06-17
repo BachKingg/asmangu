@@ -3,6 +3,7 @@ import { Inhanvien } from '../inhanvien';
 import { NhanvienService } from '../nhanvien.service';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
+import { AuthService } from '../auth.service';
 
 @Component({
     selector: 'app-nv-list',
@@ -14,9 +15,11 @@ export class NvListComponent implements OnInit {
     constructor(
         private NhanvienService: NhanvienService,
         private DataService: DataService,
-        private router: Router
-    ) { }
+        private router: Router,
+        private AuthService: AuthService,
 
+    ) { }
+    daDangNhap() { return this.AuthService.daDangNhap() }
     listNhanVien: Inhanvien[] = [];
 
     ngOnInit(): void {

@@ -25,7 +25,7 @@
                                 <th scope="col">Ngày sinh</th>
                                 <th scope="col">Giới tính</th>
                                 <th scope="col">Khu vực</th>
-                                <th scope="col">Options</th>
+                                <th scope="col"  *ngIf="daDangNhap()">Options</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,7 +35,7 @@
                                 <td>{{nv.ngaysinh | date:"dd/MM/yyyy"}}</td>
                                 <td>{{nv.phai==true?'Nam':'Nữ'}}</td>
                                 <td>{{nv.khuvuc}}</td>
-                                <td>
+                                <td  *ngIf="daDangNhap()">
                                     <i class='bx bx-info-circle'></i>
                                     <i class='bx bx-edit' (click)="editNV(nv)"></i>
                                     <i class='bx bx-trash' (click)="deleteNV(nv.id)"></i>

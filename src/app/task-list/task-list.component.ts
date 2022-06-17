@@ -7,6 +7,7 @@ import { TaskService } from '../task.service';
 import { DuanService } from '../duan.service';
 import { NhanvienService } from '../nhanvien.service';
 import { DataService } from '../data.service';
+import { AuthService } from '../auth.service';
 
 @Component({
     selector: 'app-task-list',
@@ -24,9 +25,10 @@ export class TaskListComponent implements OnInit {
         private NhanvienService: NhanvienService,
         private DuanService: DuanService,
         private DataService: DataService,
-        private router: Router
+        private router: Router,
+        private AuthService: AuthService,
     ) { }
-
+    daDangNhap() { return this.AuthService.daDangNhap() }
     ngOnInit(): void {
         this.getData();
     }

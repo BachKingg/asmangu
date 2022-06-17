@@ -11,15 +11,22 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h3 class="card-title fs-3">{{da.tenDuAn}}</h3>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional
-                        content. This content is a little bit longer.</p>
-                    <p class="card-text"><strong>Chi phí:</strong> {{da.tien | currency:'VND'}}</p>
-                    <p class="card-text"><strong>Leader:</strong> {{da.leader}}</p>
-                    <p class="card-text"><strong>Thành viên:</strong> {{da.thanhvien}}</p>
+                    <h3 class="card-title fs-3">{{duAn.tenDuAn}}</h3>
+                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit nulla laborum
+                        accusantium tenetur! Soluta voluptatum, libero officia deleniti, accusamus magni corporis
+                        facilis cupiditate ut sit quaerat praesentium vitae commodi repudiandae.</p>
+                    <p class="card-text"><strong>Chi phí:</strong> {{duAn.tien | currency:'VND'}}</p>
+                    <div class="card-text d-flex">
+                        <strong>Leader:</strong>
+                        <div *ngFor="let nv of listNv">
+                            <p *ngIf="duAn.leader == nv.id">
+                                {{nv.fullname}}
+                            </p>
+                        </div>
+                    </div>
+                    <p class="card-text"><strong>Thành viên:</strong> {{duAn.thanhvien}}</p>
                     <p class="card-text">
-                        <small class="text-muted">Last updated {{da.ngayStart | date:'dd/MM/yyyy'}}.</small>
+                        <small class="text-muted">Last updated {{duAn.ngayStart | date:'dd/MM/yyyy'}}.</small>
                     </p>
                 </div>
             </div>

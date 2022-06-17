@@ -18,7 +18,8 @@ export class DuanService {
     ]
 
 
-    private url = 'http://localhost:3000/duAn';
+    private url = 'http://localhost:5000/duAn';
+    static thanhvien: any;
 
     constructor(private http: HttpClient) { }
 
@@ -31,7 +32,6 @@ export class DuanService {
     }
 
     getSingleDA(id: number) {
-        // return this.list.find((currentValue) => currentValue.id == id);
         return this.http.get(`${this.url}/${id}`);
     }
 

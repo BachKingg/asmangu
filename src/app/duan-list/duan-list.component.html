@@ -27,7 +27,7 @@
                                 <th scope="col">Chi phí</th>
                                 <th scope="col">Leader</th>
                                 <th scope="col">Thành viên</th>
-                                <th scope="col">Options</th>
+                                <th scope="col"  *ngIf="daDangNhap()">Options</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,9 +36,21 @@
                                 <td [routerLink]="['/duan/chitietDA',da.id]">{{da.tenDuAn}}</td>
                                 <td>{{da.ngayStart | date:"dd/MM/yyyy"}}</td>
                                 <td>{{da.tien | currency:'VND'}}</td>
-                                <td>{{da.leader}}</td>
-                                <td>{{da.thanhvien}}</td>
                                 <td>
+                                    <div *ngFor="let nv of listNv">
+                                        <p *ngIf="da.leader == nv.id">
+                                            {{nv.fullname}}
+                                        </p>
+                                    </div>
+                                </td>
+                                <td>{{da.thanhvien}}
+                                    <!-- <div *ngFor="let nv of listNv">
+                                        <p *ngIf="da.thanhvien == nv.id">
+                                            {{nv.fullname}}
+                                        </p>
+                                    </div> -->
+                                </td>
+                                <td  *ngIf="daDangNhap()">
                                     <i class='bx bx-info-circle'></i>
                                     <i class='bx bx-edit' (click)="editDuAn(da)"></i>
                                     <i class='bx bx-trash' (click)="deleteDuAn(da.id)"></i>

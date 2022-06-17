@@ -16,7 +16,6 @@ export class NvSuaComponent implements OnInit {
         private router: Router,
     ) { }
 
-
     staffFullName: any;
     staffBirth: any;
     staffGender: any;
@@ -30,6 +29,7 @@ export class NvSuaComponent implements OnInit {
 
     getData() {
         this.nv = this.DataService.getData();
+
         this.staffFullName = this.nv.fullname;
         this.staffBirth = this.nv.ngaysinh;
         this.staffGender = this.nv.phai;

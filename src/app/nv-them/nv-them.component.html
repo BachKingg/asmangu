@@ -13,8 +13,7 @@
                                 <div class=" col-12">
                                     <div class="form-group">
                                         <label for="first-name-column">Họ & Tên</label>
-                                        <input type="text" id="first-name-column"
-                                            class="form-control"
+                                        <input type="text" id="first-name-column" class="form-control"
                                             placeholder="Nhập tên đầy đủ ..." minlength="4" name="staffFullName"
                                             [(ngModel)]="staffFullName" required #errFullName="ngModel">
                                         <div *ngIf="errFullName.invalid && (errFullName.dirty || errFullName.touched)"

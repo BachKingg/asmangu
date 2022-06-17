@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { DuanService } from '../duan.service';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Iduan } from '../iduan';
+import { Inhanvien } from '../inhanvien';
+import { DuanService } from '../duan.service';
+import { NhanvienService } from '../nhanvien.service';
 
 @Component({
     selector: 'app-duan-chitiet',
@@ -12,18 +14,119 @@ export class DuanChitietComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        private daService: DuanService
+        private router: Router,
+        private DuanService: DuanService,
+        private NhanvienService: NhanvienService
     ) { }
-    idDA: number = Number(this.route.snapshot.params['id'])
-    da = <Iduan>{};
+
+    @Output() teamOut = new EventEmitter();
+
+    idDuAn: number = Number(this.route.snapshot.params['id']);
+    allDuAn: any;
+    allNV: any;
+    duAn = <Iduan>{};
+    listNv: Inhanvien[] = [];
+    totalSouth: number = 0;
+    totalNorth: number = 0;
+    totalCentral: number = 0;
+
+    team: {
+        memberSouth: Inhanvien[];
+        memberNorth: Inhanvien[];
+        memberCentral: Inhanvien[];
+    } = {
+            memberSouth: [],
+            memberNorth: [],
+            memberCentral: [],
+        };
+
     ngOnInit(): void {
-        if (this.idDA < 0) return;
-        let kq = this.daService.getSingleDA(this.idDA);
-        if (kq == null) {
-            this.da = {} as Iduan;
-        } else {
-            this.da = kq as unknown as Iduan;
-        }
+        this.DuanService.getDataDA().subscribe(
+            (response: any) => {
+                this.allDuAn = response;
+            },
+            (error: any) => {
+                console.log(error);
+            }
+        );
+        this.NhanvienService.getDataNV().subscribe(
+            (response: any) => {
+                this.allNV = response;
+                this.getData();
+            },
+            (error: any) => {
+                console.log(error);
+            }
+        );
     }
+    getData() {
+        if (this.idDuAn < 0) return;
+
+        //get detail this project
+        this.DuanService.getSingleDA(this.idDuAn).subscribe(
+            (response: any) => {
+                if (response == null) {
+                    this.duAn = {} as Iduan;
+                } else {
+                    this.duAn = response as Iduan;
+
+                    //get info member in project
+                    this.listNv = this.allNV.filter((item: any) =>
+                        this.duAn.thanhvien.includes(item.id)
+                    );
+                    // this.duAn.thanhvien.forEach((item) => {
+                    //   this.NhanVienService.getOne(item).subscribe(
+                    //     (_item: any) => (data.push(_item))
+                    //   );
+                    // });
+                    // console.log(data);
+
+                    //check member area
+                    this.listNv.forEach((item) => {
+                        if (item.khuvuc == 'Bắc') {
+                            this.team.memberNorth.push(item);
+                            this.totalNorth = this.totalNorth + 1;
+                        }
+                        if (item.khuvuc == 'Trung') {
+                            this.team.memberCentral.push(item);
+                            this.totalCentral = this.totalCentral + 1;
+                        }
+                        if (item.khuvuc == 'Nam') {
+                            this.team.memberSouth.push(item);
+                            this.totalSouth = this.totalSouth + 1;
+                        }
+                    });
+                    this.teamOut.emit(this.team);
+                }
+            },
+            (error: any) => {
+                console.log(error);
+            }
+        );
+        this.NhanvienService.getDataNV().subscribe((data: any) => {
+            this.listNv = data;
+        });
+    }
+    
+
+    onChange(deviceValue: any) {
+        this.router.navigate(['/duan', deviceValue.value]);
+        this.idDuAn = deviceValue.value;
+        console.log(this.team);
+        this.teamOut.emit(this.team);
+
+        return true;
+    }
+    // idDA: number = Number(this.route.snapshot.params['id'])
+    // da = <Iduan>{};
+    // ngOnInit(): void {
+    //     if (this.idDA < 0) return;
+    //     let kq = this.DuanService.getSingleDA(this.idDA);
+    //     if (kq == null) {
+    //         this.da = {} as Iduan;
+    //     } else {
+    //         this.da = kq as unknown as Iduan;
+    //     }
+    // }
 
 }

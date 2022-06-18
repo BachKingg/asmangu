@@ -7,6 +7,9 @@ import { NhanvienService } from '../nhanvien.service';
 import { TaskService } from '../task.service';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
+import { Team } from '../team';
+import { Chart, registerables } from 'chart.js';
+Chart.register(...registerables);
 
 @Component({
     selector: 'app-thongke',
@@ -14,6 +17,8 @@ import { DataService } from '../data.service';
     styleUrls: ['./thongke.component.css']
 })
 export class ThongkeComponent implements OnInit {
+    listDuAn: any;
+    arrayPrice: string | number | undefined;
 
     constructor(
         private DuanService: DuanService,
@@ -30,7 +35,11 @@ export class ThongkeComponent implements OnInit {
     @Input() totalPrice: any = 0;
     @Input() totalTask: any = 0;
     @Input() totalDuan: any = 0;
-    @Input() team: any;
+    @Input() totalNorth: any = 0;
+    @Input() totalSouth: any = 0;
+    @Input() totalMiddle: any = 0;
+
+    
 
     nFormatter(num: number) {
         if (num >= 1000000000) {
@@ -49,20 +58,9 @@ export class ThongkeComponent implements OnInit {
         this.getData();
     }
 
-    ngOnChanges($event: any): void {
-        this.getData();
-        if ($event.team.firstChange) {
-            this.team = {
-                memberSouth: [{ fullName: '', id: 0 }],
-                memberCentral: [{ fullName: '', id: 0 }],
-                memberNorth: [{ fullName: '', id: 0 }],
-            };
-        } else {
-            console.log($event.team);
-        }
-    }
 
     getData() {
+
         this.NhanvienService.getDataNV().subscribe((data: any) => {
             data.map((_element: any) => {
                 if (_element.phai == true || _element.phai == 'true') {
@@ -78,6 +76,7 @@ export class ThongkeComponent implements OnInit {
         });
         this.DuanService.getDataDA().subscribe((data: any) => {
             this.totalDuan = data.length;
+            this.listDuAn = data;
         });
         this.DuanService.getDataDA().subscribe((data: any) => {
             data.forEach((_item: any) => {
@@ -87,8 +86,28 @@ export class ThongkeComponent implements OnInit {
         });
         this.TaskService.getDataTask().subscribe((data: any) => {
             this.totalTask = data.length;
-        });
+        }
+        );
+        this.NhanvienService.getDataNV().subscribe((data: any) => {
+            this.totalNorth = this.listNhanVien.filter((item: any) => item.khuvuc == 'Bắc');
+            this.totalSouth = this.listNhanVien.filter((item: any) => item.khuvuc == 'Nam');
+            this.totalMiddle = this.listNhanVien.filter((item: any) => item.khuvuc == 'Trung');
+        }
+            , (error: any) => {
+                console.log(error);
+            }
+        );
+
+
+        this.TaskService.getDataTask().subscribe((data: any) => {
+            this.totalTask = data.length;
+        }
+            , (error: any) => {
+                console.log(error);
+            }
+        );
+
+
 
     }
-
 }

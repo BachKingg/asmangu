@@ -6,6 +6,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Moment } from 'moment';
+import Chart from 'chart.js/auto';
 
 import { DuanListComponent } from './duan-list/duan-list.component';
 import { DuanThemComponent } from './duan-them/duan-them.component';

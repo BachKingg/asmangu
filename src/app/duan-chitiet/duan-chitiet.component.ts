@@ -19,6 +19,7 @@ export class DuanChitietComponent implements OnInit {
         private NhanvienService: NhanvienService
     ) { }
 
+
     @Output() teamOut = new EventEmitter();
 
     idDuAn: number = Number(this.route.snapshot.params['id']);
@@ -30,6 +31,7 @@ export class DuanChitietComponent implements OnInit {
     totalNorth: number = 0;
     totalCentral: number = 0;
 
+
     team: {
         memberSouth: Inhanvien[];
         memberNorth: Inhanvien[];
@@ -40,6 +42,7 @@ export class DuanChitietComponent implements OnInit {
             memberCentral: [],
         };
 
+
     ngOnInit(): void {
         this.DuanService.getDataDA().subscribe(
             (response: any) => {
@@ -49,6 +52,7 @@ export class DuanChitietComponent implements OnInit {
                 console.log(error);
             }
         );
+
         this.NhanvienService.getDataNV().subscribe(
             (response: any) => {
                 this.allNV = response;
@@ -58,6 +62,8 @@ export class DuanChitietComponent implements OnInit {
                 console.log(error);
             }
         );
+
+
     }
     getData() {
         if (this.idDuAn < 0) return;
@@ -69,17 +75,10 @@ export class DuanChitietComponent implements OnInit {
                     this.duAn = {} as Iduan;
                 } else {
                     this.duAn = response as Iduan;
-
                     //get info member in project
                     this.listNv = this.allNV.filter((item: any) =>
                         this.duAn.thanhvien.includes(item.id)
                     );
-                    // this.duAn.thanhvien.forEach((item) => {
-                    //   this.NhanVienService.getOne(item).subscribe(
-                    //     (_item: any) => (data.push(_item))
-                    //   );
-                    // });
-                    // console.log(data);
 
                     //check member area
                     this.listNv.forEach((item) => {
@@ -107,7 +106,7 @@ export class DuanChitietComponent implements OnInit {
             this.listNv = data;
         });
     }
-    
+
 
     onChange(deviceValue: any) {
         this.router.navigate(['/duan', deviceValue.value]);
@@ -117,16 +116,7 @@ export class DuanChitietComponent implements OnInit {
 
         return true;
     }
-    // idDA: number = Number(this.route.snapshot.params['id'])
-    // da = <Iduan>{};
-    // ngOnInit(): void {
-    //     if (this.idDA < 0) return;
-    //     let kq = this.DuanService.getSingleDA(this.idDA);
-    //     if (kq == null) {
-    //         this.da = {} as Iduan;
-    //     } else {
-    //         this.da = kq as unknown as Iduan;
-    //     }
-    // }
+
+
 
 }

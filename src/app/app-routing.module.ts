@@ -23,15 +23,15 @@ import { BaoveGuard } from './baove.guard';
 const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'home', component: HomeComponent },
-    { path: 'duan/listDA', component: DuanListComponent , canActivate: [BaoveGuard],},
-    { path: 'duan/themDA', component: DuanThemComponent , canActivate: [BaoveGuard],},
-    { path: 'duan/suaDA/:id', component: DuanSuaComponent , canActivate: [BaoveGuard],},
+    { path: 'duan/listDA', component: DuanListComponent, canActivate: [BaoveGuard], },
+    { path: 'duan/themDA', component: DuanThemComponent, canActivate: [BaoveGuard], },
+    { path: 'duan/suaDA/:id', component: DuanSuaComponent, canActivate: [BaoveGuard], },
     { path: 'duan/chitietDA/:id', component: DuanChitietComponent, canActivate: [BaoveGuard], },
-    { path: 'nv/listXV', component: NvListComponent , canActivate: [BaoveGuard],},
-    { path: 'nv/themXV', component: NvThemComponent , canActivate: [BaoveGuard],},
-    { path: 'nv/suaXV/:id', component: NvSuaComponent , canActivate: [BaoveGuard],},
-    { path: 'task/listTask', component: TaskListComponent , canActivate: [BaoveGuard],},
-    { path: 'task/themTask', component: TaskThemComponent , canActivate: [BaoveGuard],},
+    { path: 'nv/listXV', component: NvListComponent, canActivate: [BaoveGuard], },
+    { path: 'nv/themXV', component: NvThemComponent, canActivate: [BaoveGuard], },
+    { path: 'nv/suaXV/:id', component: NvSuaComponent, canActivate: [BaoveGuard], },
+    { path: 'task/listTask', component: TaskListComponent, canActivate: [BaoveGuard], },
+    { path: 'task/themTask', component: TaskThemComponent, canActivate: [BaoveGuard], },
     { path: 'task/suaTask/:id', component: TaskSuaComponent, canActivate: [BaoveGuard], },
     { path: 'thongke/tk', component: ThongkeComponent, canActivate: [BaoveGuard], },
     { path: 'dangnhap', component: DangnhapComponent },
@@ -42,9 +42,8 @@ const routes: Routes = [
         canActivate: [BaoveGuard],
     },
     {
-        path: 'quenpass',
-        component: QuenpassComponent,
-        canActivate: [BaoveGuard],
+        path: 'quenpass', component: QuenpassComponent,
+
     },
 ];
 

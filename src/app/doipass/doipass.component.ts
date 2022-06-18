@@ -12,7 +12,8 @@ export class DoipassComponent implements OnInit {
     
     userName: any;
     password: any = '';
-    password2: any = '';
+    newpassword: any = '';
+    newrepassword: any = '';
     wrongPass: boolean = false;
     truePass: boolean = false;
 
@@ -30,7 +31,7 @@ export class DoipassComponent implements OnInit {
         this.UserService.getOne(id).subscribe((data: any) => {
             data = {
                 ...data,
-                password: dataForm.password,
+                password: dataForm.newrepassword,
             };
             this.UserService.editUser(data);
             alert('Đổi mật khẩu thành công');
@@ -41,9 +42,9 @@ export class DoipassComponent implements OnInit {
 
     checkPass() {
         if (
-            this.password != '' &&
-            this.password2 != '' &&
-            this.password == this.password2
+            this.newpassword != '' &&
+            this.newrepassword != '' &&
+            this.newpassword == this.newrepassword
         ) {
             this.wrongPass = false;
             this.truePass = true;

@@ -71,6 +71,15 @@
       "moTa": "tạo 1 smartcontract cơ bản để chuyển tiền",
       "status": "1",
       "priority": "1"
+    },
+    {
+      "id": "101",
+      "tenTask": "du an moi toanh",
+      "duAnID": "1",
+      "nhanvienID": "10",
+      "moTa": "hihihihi",
+      "status": "1",
+      "priority": "1"
     }
   ],
   "nhanVien": [
@@ -255,6 +264,17 @@
         "7",
         "8"
       ]
+    },
+    {
+      "id": "10",
+      "tenDuAn": "hihihi",
+      "ngayStart": "2022-06-30",
+      "tien": "9999999",
+      "leader": "2",
+      "thanhvien": [
+        "2",
+        "4"
+      ]
     }
   ],
   "leader": [
@@ -308,7 +328,7 @@
     {
       "email": "admin@gmail.com",
       "userName": "admin",
-      "password": "admin",
+      "password": "123456",
       "id": "GRkD4y2"
     },
     {
@@ -317,6 +337,13 @@
       "password": "123",
       "repassword": "123",
       "id": "_HF6-VR"
+    },
+    {
+      "email": "bach@gmail.com",
+      "userName": "admin123",
+      "password": "123",
+      "repassword": "123",
+      "id": "PUPjUEM"
     }
   ]
 }
